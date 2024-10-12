@@ -19,6 +19,7 @@ services:
     restart: always
     environment:
       POSTGRES_DB: myapp_test
+      POSTGRES_PASSWORD: postgres # Add this line
     volumes:
       - "pgdata_test:/var/lib/postgresql/data"
     ports:

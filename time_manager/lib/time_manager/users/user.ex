@@ -1,7 +1,6 @@
 defmodule TimeManager.Users.User do
   use Ecto.Schema
   import Ecto.Changeset
-  import Bcrypt
 
   schema "users" do
     field :username, :string
@@ -10,6 +9,7 @@ defmodule TimeManager.Users.User do
     field :is_manager, :boolean, default: false
     field :is_general_manager, :boolean, default: false
     field :password, :string, virtual: true
+    field :team_id, :id
 
     timestamps(type: :utc_datetime)
   end
