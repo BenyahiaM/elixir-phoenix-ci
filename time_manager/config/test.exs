@@ -8,9 +8,8 @@ import Config
 config :time_manager, TimeManager.Repo,
   username: "postgres",
   password: "postgres",
+  database: "myapp_test",
   hostname: "db",
-  database: "time_manager_test#{System.get_env("MIX_TEST_PARTITION")}",
-  pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: System.schedulers_online() * 2
 
 # We don't run a server during test. If one is required,
