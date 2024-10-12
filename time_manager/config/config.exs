@@ -8,10 +8,12 @@
 import Config
 
 config :time_manager, TimeManager.Repo,
-  database: "time_manager_repo",
-  username: "user",
-  password: "pass",
-  hostname: "localhost"
+  username: "postgres",
+  password: "postgres",
+  database: "time_manager_dev",
+  hostname: "localhost",
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
 
 config :time_manager,
   ecto_repos: [TimeManager.Repo],
