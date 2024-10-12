@@ -2,8 +2,8 @@ defmodule TimeManager.Repo.Migrations.AddTeamUser do
   use Ecto.Migration
 
   def change do
-    alter table(:user) do
-      add :team_id, references(:team, on_delete: :nilify_all)
+    alter table(:users) do
+      add_if_not_exists(:team_id, :integer)
     end
   end
 end

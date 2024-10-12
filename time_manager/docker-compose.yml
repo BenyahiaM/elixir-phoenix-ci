@@ -1,16 +1,15 @@
 version: "3.8"
+
 services:
   db:
     image: "postgres:11-alpine"
     restart: always
     environment:
-      PGDATA: /var/lib/postgresql/data/pgdata
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
-      POSTGRES_HOST_AUTH_METHOD: trust
       POSTGRES_DB: myapp_dev
     volumes:
-      - "pgdata:/var/lib/postgresql/data" # Persist data even if container is destroyed
+      - "pgdata:/var/lib/postgresql/data"  # Correct volume name
     ports:
       - "5442:5432"
 
@@ -18,8 +17,9 @@ services:
     image: "postgres:11-alpine"
     restart: always
     environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
       POSTGRES_DB: myapp_test
-      POSTGRES_PASSWORD: postgres # Add this line
     volumes:
       - "pgdata_test:/var/lib/postgresql/data"
     ports:
@@ -28,14 +28,14 @@ services:
   web:
     build: .
     depends_on:
-      - db
+      - db_test  # Ensure the web service waits for the test database
     environment:
       DATABASE_URL: postgres://postgres:postgres@db:5432/myapp_dev
     ports:
-      - "4000:4000" # Assuming your application listens on port 4001
+      - "4000:4000"
     volumes:
       - .:/app
 
 volumes:
-  pgdata:
-  pgdata_test:
+  pgdata: {}       # Declare the pgdata volume
+  pgdata_test: {}  # Declare the pgdata_test volume

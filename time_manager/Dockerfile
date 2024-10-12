@@ -10,12 +10,9 @@ COPY . .
 
 RUN mix compile
 
-# Générer la documentation Swagger
+# Generate the Swagger documentation
 RUN mix phx.swagger.generate
 
-# Générer la documentation Swagger
-RUN mix phx.swagger.generate
+EXPOSE 4000  
 
-EXPOSE 400
-
-CMD ["sh", "-c","mix ecto.create && mix ecto.migrate && mix deps.get && mix phx.server"]
+CMD ["sh", "-c", "mix ecto.create && mix ecto.migrate && mix phx.server"]
