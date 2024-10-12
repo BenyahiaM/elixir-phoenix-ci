@@ -38,11 +38,11 @@ jobs:
           elixir-version: '1.12'  # or the version you use
           otp-version: '24'  # or the version you use
 
-    - name: Install dependencies
-      run: mix deps.get
-      working-directory: ./time_manager  # Change this to your project's folder
+      - name: Install dependencies
+        run: mix deps.get
+        working-directory: ./time_manager  # Change this to your project's folder
 
-    - name: Run tests
-      run: mix test
-      working-directory: ./time_manager  # Change this to your project's folder
+      - name: Run tests
+        run: mix test
+        working-directory: ./time_manager  # Change this to your project's folder
         
