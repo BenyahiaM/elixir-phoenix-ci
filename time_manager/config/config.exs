@@ -1,4 +1,4 @@
-  # This file is responsible for configuring your application
+# This file is responsible for configuring your application
 # and its dependencies with the aid of the Config module.
 #
 # This configuration file is loaded before any dependency and
@@ -37,7 +37,7 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-  #Configures Swagger
+# Configures Swagger
 config :time_manager, :phoenix_swagger,
        swagger_files: %{
          "priv/static/swagger.json" => [
@@ -46,10 +46,7 @@ config :time_manager, :phoenix_swagger,
          ]
        }
 
-config :my_app, MyApp.Web.Endpoint,
-       url: [host: "localhost"]
-
-  # Use Jason for JSON parsing in Phoenix
+# Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
 # Import environment specific config. This must remain at the bottom
