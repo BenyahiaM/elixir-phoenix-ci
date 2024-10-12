@@ -9,8 +9,9 @@ config :time_manager, TimeManager.Repo,
   username: "postgres",
   password: "postgres",
   database: "myapp_test",
-  hostname: "db",
+  hostname: "db",  # This should match the service name in your workflow
   pool_size: System.schedulers_online() * 2
+
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
