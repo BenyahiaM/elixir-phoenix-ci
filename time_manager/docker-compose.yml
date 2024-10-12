@@ -1,14 +1,14 @@
 version: "3.8"
 services:
   db:
+    image: "postgres:11-alpine"
+    restart: always
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_HOST_AUTH_METHOD: trust
       POSTGRES_DB: myapp_dev
-    image: "postgres:11-alpine"
-    restart: always
     volumes:
       - "pgdata:/var/lib/postgresql/data" # Persist data even if container is destroyed
     ports:
@@ -19,10 +19,9 @@ services:
     depends_on:
       - db
     environment:
-            DATABASE_URL: postgres://postgres:postgres@db:5442/time_manager_dev
-
+      DATABASE_URL: postgres://postgres:postgres@db:5432/myapp_dev
     ports:
-      - "4000:4001"
+      - "4000:4000" # Assuming your application listens on port 4001
     volumes:
       - .:/app
 
