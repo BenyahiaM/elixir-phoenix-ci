@@ -30,7 +30,7 @@ services:
     depends_on:
       - db_test  # Ensure the web service waits for the test database
     environment:
-      DATABASE_URL: postgres://postgres:postgres@db:5432/myapp_dev
+      DATABASE_URL: postgres://postgres:postgres@db_test:5432/myapp_dev
     ports:
       - "4000:4000"
     volumes:
