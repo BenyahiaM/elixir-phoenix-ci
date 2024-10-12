@@ -10,7 +10,8 @@ config :time_manager, TimeManager.Repo,
   database: "myapp_test",
   hostname: "localhost",
   port: 5443,
-  pool_size: 10
+  pool: Ecto.Adapters.SQL.Sandbox,
+  pool_size: System.schedulers_online() * 2
 
 # We don't run a server during test. If one is required, enable it below.
 config :time_manager, TimeManagerWeb.Endpoint,
