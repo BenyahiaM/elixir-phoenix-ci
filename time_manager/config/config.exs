@@ -11,7 +11,7 @@ config :time_manager, TimeManager.Repo,
   username: "postgres",
   password: "postgres",
   database: "test_db",
-  hostname: "postgres",
+  hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

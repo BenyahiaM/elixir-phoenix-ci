@@ -8,7 +8,7 @@ config :time_manager, TimeManager.Repo,
   username: "postgres",
   password: "postgres",
   database: "myapp_test",
-  hostname: "db_test",
+  hostname: "localhost",
   port: 5443,
   pool_size: 10
 
