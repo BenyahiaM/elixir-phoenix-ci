@@ -14,6 +14,16 @@ services:
     ports:
       - "5442:5432"
 
+  db_test:
+    image: "postgres:11-alpine"
+    restart: always
+    environment:
+      POSTGRES_DB: myapp_test
+    volumes:
+      - "pgdata_test:/var/lib/postgresql/data"
+    ports:
+      - "5443:5432"
+
   web:
     build: .
     depends_on:
@@ -27,3 +37,4 @@ services:
 
 volumes:
   pgdata:
+  pgdata_test:
