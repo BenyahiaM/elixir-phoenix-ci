@@ -1,6 +1,8 @@
 import Config
 
 # Configure your database
+# Log the current environment
+IO.puts("Running in #{System.get_env("MIX_ENV")} environment")
 #
 # The MIX_TEST_PARTITION environment variable can be used
 # to provide built-in test partitioning in CI environment.
