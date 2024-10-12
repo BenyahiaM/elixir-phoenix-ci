@@ -8,9 +8,9 @@ config :time_manager, TimeManager.Repo,
   username: "postgres",
   password: "postgres",
   database: "myapp_test",
-  hostname: "db_test",  # This matches the db_test service in Docker and GitHub Actions
-  pool: Ecto.Adapters.SQL.Sandbox,
-  pool_size: System.schedulers_online() * 2
+  hostname: "db_test",
+  port: 5443,
+  pool_size: 10
 
 # We don't run a server during test. If one is required, enable it below.
 config :time_manager, TimeManagerWeb.Endpoint,
