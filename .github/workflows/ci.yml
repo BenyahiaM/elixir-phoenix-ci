@@ -10,7 +10,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     services:
@@ -21,7 +20,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: myapp_dev
         ports:
-          - 5442:5432
+          - 5432:5432  # Ensure this matches the default PostgreSQL port
         options: >-
           --health-cmd="pg_isready -U postgres"
           --health-interval=10s
@@ -35,8 +34,8 @@ jobs:
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
         with:
-          elixir-version: '1.17.3'  # Update to 1.14 or higher
-          otp-version: '27.0'       # Ensure this is compatible as well
+          elixir-version: '1.17.3'  # Ensure compatibility
+          otp-version: '27.0'
 
       - name: Install dependencies
         run: mix deps.get
@@ -44,4 +43,6 @@ jobs:
 
       - name: Run tests
         run: mix test
+        env:
+          MIX_ENV: test  # Set the environment to test
         working-directory: ./time_manager  # Adjust to your project's folder
