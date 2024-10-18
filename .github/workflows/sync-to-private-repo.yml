@@ -1,0 +1,26 @@
+name: Sync to Private Repo
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  sync-repo:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout code from the main repo
+    - name: Checkout code from main repo
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Git
+    - name: Set up Git
+      run: |
+        git config --global user.name "Time Manager Team"
+        git config --global user.email "mourad.benyahia@epitech.eu"
+    
+    # Step 3: Add secondary repo as remote using hardcoded PATnn
+    - name: Add secondary repo as remote
+      run: |
+        git push secondary dev --force
